@@ -107,10 +107,10 @@ do
   --  For more options, you can see `:help option-list`
 
   -- Make line numbers default
-  vim.o.number = true
+  vim.o.number = false
   -- You can also add relative line numbers, to help with jumping.
   --  Experiment for yourself to see if you like it!
-  vim.o.relativenumber = true
+  vim.o.relativenumber = false
 
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
@@ -445,7 +445,7 @@ do
   -- Load the colorscheme here.
   -- Like many other themes, this one has different styles, and you could load
   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-  vim.cmd.colorscheme 'tokyonight-night'
+  vim.cmd.colorscheme 'catppuccin'
   vim.api.nvim_set_hl(0, 'ZenBg', { bg = 'NONE' })
 
   -- for _, g in ipairs({ 'Normal', 'NormalNC', 'NormalFloat', 'SignColumn' }) do
@@ -1081,6 +1081,10 @@ do
   vim.opt.statusline = " %f %m"
   vim.opt.fillchars:append({ stl = " ", stlnc = " " })
   vim.opt.foldcolumn = "0"
+
+  vim.keymap.set("n", "<leader>tn", function()
+    vim.wo.number = not vim.wo.number
+  end, { desc = "[T]oggle line [N]umbers" })
 
   local function style_statusline()
     vim.api.nvim_set_hl(0, "StatusLine",   { link = "Comment" })

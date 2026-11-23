@@ -1069,6 +1069,11 @@ do
   vim.pack.add { 'https://github.com/windwp/nvim-autopairs' }
   require('nvim-autopairs').setup {}
 
+  vim.g.VM_maps = {
+    ['Exit'] = '<C-c>',
+  }
+  vim.pack.add { 'https://github.com/mg979/vim-visual-multi' }
+
   -- 2 spaces everywhere
   vim.opt.tabstop = 4
   vim.opt.shiftwidth = 4

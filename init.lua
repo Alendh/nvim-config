@@ -445,7 +445,7 @@ do
   -- Load the colorscheme here.
   -- Like many other themes, this one has different styles, and you could load
   -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-  vim.cmd.colorscheme 'catppuccin'
+  -- vim.cmd.colorscheme 'gruvbox'
   vim.api.nvim_set_hl(0, 'ZenBg', { bg = 'NONE' })
 
   -- for _, g in ipairs({ 'Normal', 'NormalNC', 'NormalFloat', 'SignColumn' }) do
@@ -1098,6 +1098,34 @@ do
   style_statusline()
   vim.api.nvim_create_autocmd("ColorScheme", { callback = style_statusline })
 
+  vim.pack.add({
+    "https://github.com/ellisonleao/gruvbox.nvim",
+  })
+
+  vim.o.background = "dark"
+
+  vim.keymap.set('n', '<leader>td', function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+  end, {desc = '[T]oggle [D]iagnostics'})
+
+  require("gruvbox").setup({
+      contrast = "hard",
+      transparent_mode = false,
+
+    italic = {
+        strings = false,
+        comments = false,
+        emphasis = false,
+        operators = false,
+        folds = false,
+    },
+  })
+
+  vim.cmd.colorscheme 'gruvbox'
+
+  vim.api.nvim_set_hl(0, "LspReferenceText", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "LspReferenceRead", { bg = "NONE" })
+  vim.api.nvim_set_hl(0, "LspReferenceWrite", { bg = "NONE" })
 
 end
 
